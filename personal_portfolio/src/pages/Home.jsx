@@ -1,90 +1,81 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import ChibiCharacter from '../ChibiCharacter.jsx';
+import { useNavigate } from 'react-router-dom'; // Keep this
+import LottieCharacter from '../components/LottieCharacter'; 
+import LinkWindow from '../components/LinkWindow';
+import PinkButton from '../components/PinkButton'; // Keep this
 
 function Home() {
-    return (
-    <section className="
-        min-h-[90vh] flex flex-col-reverse md:flex-row
-        items-center justify-between
-        gap-10 px-[8%] py-16 md:py-0
-        ">
+  const navigate = useNavigate(); // This is the "driver" that changes pages
 
-      {/*Text Section */}
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="min-h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-[8%] py-16 md:py-0">
+
+        {/* Text Section */}
         <div className="flex flex-col gap-4 max-w-lg text-center md:text-left">
-
-        <motion.p
-            className="text-pink-400 font-medium text-lg" // Changed violet to pink
+          <motion.p 
+            className="text-pink-400 font-medium text-lg"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-        >
+          >
             Hi there, I'm
-        </motion.p>
+          </motion.p>
 
-        <motion.h1
-            className="text-5xl md:text-6xl font-bold leading-tight text-gray-800"
+          <motion.h1 
+            className="text-7xl md:text-8xl font-['Sacramento'] text-gray-900 drop-shadow-sm pb-2"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-        >
+            transition={{ delay: 0.15 }}
+          >
             Assila Douaa
-        </motion.h1>
+          </motion.h1>
 
-        <motion.p
-            className="text-gray-400 text-lg"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-        >
+          <motion.p className="text-gray-400 text-lg">
             Frontend developer · Creative · Based in Tunisia 🌍
-        </motion.p>
+          </motion.p>
 
-        <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-        >
-            <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.97 }}
+          {/* --- NEW STYLED BUTTON --- */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
             className="w-fit mx-auto md:mx-0"
-            >
-            <Link
-                to="/projects"
-                className="
-                inline-block px-8 py-3 bg-pink-400 text-white
-                rounded-full font-semibold
-                shadow-lg shadow-pink-200/50 
-                hover:bg-pink-500 transition-colors
-                " // Changed violet to pink and updated shadow
-            >
-                See my work
-            </Link>
-            </motion.div>
-        </motion.div>
-
+          >
+            <PinkButton 
+              text="See my work" 
+              onClick={() => navigate('/projects')} 
+            />
+          </motion.div>
         </div>
 
-      {/*Character Section */}
+        {/* Character Section */}
         <motion.div
-          className="
-            w-[280px] h-[280px] md:w-[400px] md:h-[400px] 
-            bg-pink-50 rounded-full 
-            flex items-center justify-center
-            overflow-visible
-            shadow-inner shadow-pink-100/50
-          "
+          className="w-[320px] h-[320px] md:w-[500px] md:h-[500px] bg-pink-50 rounded-full flex items-center justify-center overflow-hidden shadow-inner"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2, type: 'spring', stiffness: 200 }}
-          whileHover={{ scale: 1.05, rotate: 2 }}
+          transition={{ duration: 0.6, type: 'spring' }}
         >
-          <ChibiCharacter />
+          <div className="w-[85%] h-[85%]">
+            <LottieCharacter />
+          </div>
         </motion.div>
+      </section>
 
-    </section>
-    )
+      {/* Connections / Window Section */}
+      <section className="py-20 px-[5%] bg-pink-50 flex flex-col items-center justify-center">
+        <motion.div 
+          className="w-full max-w-2xl" // Adjusted to 'Medium' size
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <LinkWindow />
+        </motion.div>
+      </section>
+    </>
+  );
 }
 
 export default Home;
