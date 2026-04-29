@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom'; // Keep this
-import LottieCharacter from '../components/LottieCharacter'; 
+import { useNavigate } from 'react-router-dom';
+import LottieCharacter from '../components/LottieCharacter';
 import LinkWindow from '../components/LinkWindow';
-import PinkButton from '../components/PinkButton'; // Keep this
+import PinkButton from '../components/PinkButton';
+import PlayerStats from '../components/PlayerStats';
+import SkillCard from '../components/SkillCard';
 
 function Home() {
-  const navigate = useNavigate(); // This is the "driver" that changes pages
+  const navigate = useNavigate();
 
   return (
     <>
@@ -35,7 +37,7 @@ function Home() {
             Frontend developer · Creative · Based in Tunisia 🌍
           </motion.p>
 
-          {/* --- NEW STYLED BUTTON --- */}
+          {/* NEW STYLED BUTTON */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,7 +67,7 @@ function Home() {
       {/* Connections / Window Section */}
       <section className="py-20 px-[5%] bg-pink-50 flex flex-col items-center justify-center">
         <motion.div 
-          className="w-full max-w-2xl" // Adjusted to 'Medium' size
+          className="w-full max-w-2xl"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -73,6 +75,31 @@ function Home() {
         >
           <LinkWindow />
         </motion.div>
+      </section>
+      {/*  NEW: SKILLS / GAME SECTION */}
+      <section className="py-20 px-[8%] bg-white border-t-4 border-black">
+        <h2 className="text-4xl font-['Playfair_Display'] text-center mb-16 underline decoration-pink-300">
+          Player Skills
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center max-w-6xl mx-auto">
+          
+          {/* Column 1: Left Skills */}
+          <div className="flex flex-col gap-6">
+            <SkillCard name="Chess" level={80} color="bg-cyan-400" />
+            <SkillCard name="Drawing" level={75} color="bg-yellow-400" />
+          </div>
+
+          {/* Column 2: PIXEL CHARACTER */}
+          <PlayerStats />
+
+          {/* Column 3: Right Skills */}
+          <div className="flex flex-col gap-6">
+            <SkillCard name="Coding" level={90} color="bg-pink-400" />
+            <SkillCard name="Sports" level={70} color="bg-purple-400" />
+          </div>
+
+        </div>
       </section>
     </>
   );

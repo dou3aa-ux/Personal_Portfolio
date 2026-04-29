@@ -5,12 +5,15 @@ function Navbar() {
     <nav className="
         flex items-center justify-between
         px-[8%] py-5
-        border-b border-pink-50 
+        /* --- UPDATED COLORS HERE --- */
+        bg-[#fff5f7] 
+        border-b-2 border-pink-100 
+        sticky top-0 z-50
     ">
 
       {/* Logo / name */}
-        <NavLink to="/" className="font-bold text-xl text-pink-400 transition-opacity hover:opacity-80">
-        Assila Douaa.dev
+        <NavLink to="/" className="font-bold text-xl text-pink-500 transition-opacity hover:opacity-80">
+          Assila Douaa.dev
         </NavLink>
 
       {/* Links */}
@@ -28,10 +31,10 @@ function Navbar() {
             to={link.to}
             end={link.to === '/'}
             className={({ isActive }) =>
-                `text-sm font-medium transition-all duration-200 ${
+                `text-sm font-bold transition-all duration-200 px-3 py-1 rounded-full ${
                 isActive
-                  ? 'text-pink-400' 
-                  : 'text-gray-400 hover:text-pink-400'
+                  ? 'text-white bg-pink-400'
+                  : 'text-pink-400 hover:bg-pink-50'
               }`
             }
           >

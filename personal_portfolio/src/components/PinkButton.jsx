@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// We add a 'text' prop so you can change the label easily
 const PinkButton = ({ text = "Learn More", onClick }) => {
   return (
     <StyledWrapper>
