@@ -1,5 +1,5 @@
 import React from 'react';
-import meImage from '../assets/me.jpeg'; 
+import meImage from '../assets/Me.png'; 
 
 const LinkWindow = () => {
   return (
