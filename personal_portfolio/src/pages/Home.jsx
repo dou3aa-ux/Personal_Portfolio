@@ -5,6 +5,7 @@ import LinkWindow from '../components/LinkWindow';
 import PinkButton from '../components/PinkButton';
 import PlayerStats from '../components/PlayerStats';
 import SkillCard from '../components/SkillCard';
+import CuteTerminal from '../components/CuteTerminal';
 
 function Home() {
   const navigate = useNavigate();
@@ -100,6 +101,13 @@ function Home() {
           </div>
 
         </div>
+      </section>
+      <section className="py-20 px-[8%] bg-pink-50 flex flex-col items-center">
+        <div className="text-center mb-10">
+          <p className="text-gray-500">Click the commands to talk to the system</p>
+        </div>
+  
+        <CuteTerminal />
       </section>
     </>
   );

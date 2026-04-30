@@ -22,7 +22,6 @@ function Navbar() {
             { to: '/',         label: 'Home'     },
             { to: '/about',    label: 'About'    },
             { to: '/projects', label: 'Projects' },
-            { to: '/gallery',  label: 'Gallery'  },
             { to: '/vlogs',    label: 'Vlogs'    },
             { to: '/contact',  label: 'Contact'  },
         ].map(link => (
